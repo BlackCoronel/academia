@@ -55,7 +55,7 @@
                         {!! Form::open(['url' => '/edit','method'=> 'POST']) !!}
                         <div class="form-group">
                             {{ Form::label('DNI',null,['class'=> 'col-form-label']) }}
-                            <input type="text" name="nif" class="form-control {{ $errors->has('nif') ? 'is-invalid' : '' }}">
+                            <input type="text" name="nif" class="form-control" style="{{ $errors->has('nif') ? 'border-color:red;' : '' }}"}}">
                             @if ($errors->has('nif'))
                                 <span class="invalid-feedback">
                             <strong>{{ $errors->first('nif') }}</strong>
@@ -67,6 +67,37 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                     <button type="submit" class="btn btn-primary">Editar</button>
+                </div>
+                {!! Form::close() !!}
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="borrarUsuarios" tabindex="-1" role="dialog" aria-labelledby="borrarUsuarios" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel"><i class="fa fa-trash"></i> - Borrar un Usuario</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-8">
+                        {!! Form::open(['url' => '/delete','method'=> 'POST']) !!}
+                        <div class="form-group">
+                            {{ Form::label('DNI',null,['class'=> 'col-form-label']) }}
+                            <input type="text" name="borrar_dni" class="form-control" style="{{ $errors->has('borrar_dni') ? 'border-color:red;' : '' }}">
+                            @if ($errors->has('borrar_dni'))
+                                <span class="invalid-feedback">
+                            <strong>{{ $errors->first('borrar_dni') }}</strong>
+                             </span>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Borrar</button>
                 </div>
                 {!! Form::close() !!}
             </div>
@@ -349,8 +380,9 @@
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="/register"><i class="fa fa-plus"></i> Nuevo usuario</a></li>
-                            <li><a href="index2.html" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-edit"></i> Editar usuario</a></li>
-                            <li><a href="index2.html"><i class="fa fa-minus"></i> Borrar usuario</a></li>
+                            <li><a href="#" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-edit"></i> Editar usuario</a></li>
+                            <li><a href="#" data-toggle="modal" data-target="#borrarUsuarios"><i class="fa fa-minus"></i> Borrar usuario</a></li>
+                            <li><a href="#"><i class="fa fa-address-card"></i> Matricular alumno</a></li>
                             <li><a href="/show_users"><i class="fa fa-eye"></i> Ver usuarios</a></li>
                         </ul>
                     </li>
@@ -362,7 +394,7 @@
             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="index2.html"><i class="fa fa-plus"></i> Nuevo curso</a></li>
+                            <li><a href="/new_curso" ><i class="fa fa-plus"></i> Nuevo curso</a></li>
                             <li><a href="index2.html"><i class="fa fa-edit"></i> Editar curso</a></li>
                             <li><a href="index2.html"><i class="fa fa-minus"></i> Borrar curso</a></li>
                         </ul>
@@ -404,6 +436,11 @@
             </ol>
         </section>
 
+        @if(session('status'))
+            <div class="alert alert-success" style="margin-top: 20px;">
+                {{ session('status') }}
+            </div>
+        @endif
        @yield('content')
 
     </div>
@@ -648,8 +685,16 @@
 <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/currency.js"></script>
 <script>
     @if($errors->has('nif'))
+
         $('#exampleModal').modal('show');
+
+    @elseif($errors->has('borrar_dni'))
+
+        $('#borrarUsuarios').modal('show');
+
     @endif
+
+
 </script>
 
 </body>

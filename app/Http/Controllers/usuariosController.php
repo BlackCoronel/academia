@@ -19,7 +19,7 @@ class usuariosController extends Controller
             'dni' => 'required|unique:users|string|min:9',
             'address'=> 'required',
             'date' => 'required',
-            'curso_escolar' => 'required',
+            'curso' => 'required',
             'rol' => 'required',
 
         ]);
@@ -37,13 +37,12 @@ class usuariosController extends Controller
             'rol' => $request->get('rol'),
             'cuentas_pendientes' => '0',
             'img_url' => 'img/perfil/perfil.jpg',
-            'created_at' => date(now()),
 
         ]);
 
         $user->save();
 
-        return redirect('panel')->with('status', 'El usuario ha sido registrado con éxito !!!');
+        return redirect('/register')->with('status', 'El usuario ha sido registrado con éxito !!!');
     }
 
     public function show () {
@@ -56,8 +55,9 @@ class usuariosController extends Controller
     public function returnCursos(){
 
         $cursos = DB::table('cursosacademicos')->get();
+        $roles = DB::table('roles')->get();
 
-        return view("admin.partials.register", compact('cursos'));
+        return view("admin.partials.register", compact('cursos','roles'));
     }
 
     public function edit_user(Request $request){
@@ -73,5 +73,23 @@ class usuariosController extends Controller
             return view('admin.partials.edit_user', compact('consulta', 'cursos','roles'));
 
         }
+    }
+
+    public function delete(Request $request){
+
+        $this->validate($request,[
+
+           'borrar_dni' => 'required',
+
+        ]);
+
+        DB::table('users')->where('dni', $request->borrar_dni)->delete();
+
+         return redirect('panel')->with('status', 'El usuario se ha eliminado con éxito !!!');
+    }
+
+    public function parametros(){
+
+        return view("admin.panel");
     }
 }

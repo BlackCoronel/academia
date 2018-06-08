@@ -104,6 +104,9 @@ return [
         'dni' => [
           'unique' => 'Ese :attribute ya se encuentra registrado'
         ],
+        'borrar_dni' => [
+          'required' => 'El campo DNI no puede estar vacio',
+        ],
     ],
     /*
     |--------------------------------------------------------------------------

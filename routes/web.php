@@ -29,7 +29,7 @@ Route::get('/send', 'HomeController@index')->name('Academia Cierva');
 
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::get("/panel" , function(){ return view("admin.panel"); });
+    Route::get("/panel" ,'usuariosController@parametros');
 
     Route::get("/register" , 'usuariosController@returnCursos');
     Route::post("/edit", "usuariosController@edit_user");
@@ -37,5 +37,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post("/registro", "usuariosController@store");
     Route::get("/show_users", "usuariosController@show");
 
-    Route::get("/registro_c", 'cursosController@show');
+    Route::post('/delete', 'usuariosController@delete');
+
+    Route::get("/new_curso", 'cursosController@show');
+    Route::post("/new_curso",'cursosController@up');
 });

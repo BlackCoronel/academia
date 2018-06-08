@@ -5,14 +5,14 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header" style="margin-bottom: 20px;"><h2><i class="fa fa-user" style="margin-right: 5px;"></i>Registro de usuarios</h2></div>
+                    <div class="card-header" style="margin-bottom: 20px;"><h2><i class="fa fa-edit" style="margin-right: 5px;"></i>Editar Usuarios</h2></div>
                     <div class="card-body">
                         @if(session('status'))
                             <div class="alert alert-success" style="margin-top: 20px;">
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <form method="POST" action="/registro">
+                        <form method="POST" action="/edit_users">
                             @csrf
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __("validation.attributes.name")}}</label>

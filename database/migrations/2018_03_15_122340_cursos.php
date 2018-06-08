@@ -19,6 +19,7 @@ class Cursos extends Migration
           $table->string("nombre");
           $table->string("dni_profesor");
           $table->string('curso_escolar');
+          $table->timestamps();
 
        });
     }

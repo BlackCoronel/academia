@@ -8,10 +8,10 @@
     <meta name="keyword" content="Kodinger, template, html5, css3, bootstrap4">
     <meta name="description" content="HTML5 and CSS3 Template Based on Bootstrap 4">
     <title>I'm Stisla</title>
-    <link rel="stylesheet" href="ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="sweetalert/dist/sweetalert.css">
-    <link rel="stylesheet" href="css/stisla.css">
+    <link rel="stylesheet" href="/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/sweetalert/dist/sweetalert.css">
+    <link rel="stylesheet" href="/css/stisla.css">
 </head>
 
 <body>
@@ -72,10 +72,10 @@
         </p>
     </div>
 </footer>
-<script src="js/jquery.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="js/jquery.easeScroll.js"></script>
-<script src="sweetalert/dist/sweetalert.min.js"></script>
-<script src="js/stisla.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/js/jquery.easeScroll.js"></script>
+<script src="/sweetalert/dist/sweetalert.min.js"></script>
+<script src="/js/stisla.js"></script>
 </body>
 </html>
